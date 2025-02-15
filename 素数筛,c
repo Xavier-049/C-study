@@ -1,0 +1,29 @@
+#include <stdio.h>
+int ar[100] = {0};
+void init_prime(int n)
+{
+    ar[0] = ar[1] = 1;
+    for (int i = 2; i * i < n; i++)
+    {
+        if (ar[i])
+        {
+            continue;
+        }
+        for (int j = i * i; j < n; j += i)
+        {
+            ar[j] = 1;
+        }
+    }
+}
+
+int main ()
+{
+    init_prime(100);
+    int x;
+    printf("Please enter an integer:\n");
+    while (scanf("%d",&x) == 1)
+    {
+        printf("prime[%d] = %d\n",x,ar[x]);
+    }
+    return 0;
+}
